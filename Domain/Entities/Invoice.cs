@@ -1,7 +1,6 @@
 ﻿using Domain.Common;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.Entities
 {
@@ -9,5 +8,7 @@ namespace Domain.Entities
     {
         public DateTime Date { get; set; }
         public float Tax { get; set; }
+        
+        public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

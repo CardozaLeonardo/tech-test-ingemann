@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Exceptions
 {
-    public class ApiException
+    public class ApiException: Exception
     {
+        public int HttpStatusCode { get; set; }
 
+        public ApiException(string message): base(message)
+        {
+            
+        }
     }
 }

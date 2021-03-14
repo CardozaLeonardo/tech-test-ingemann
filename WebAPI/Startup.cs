@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application;
+using Persistence;
+using WebAPI.Middlewares;
 
 namespace WebAPI
 {
@@ -27,6 +30,9 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddApplicationLayer();
+            services.AddPersistenceLayer(Configuration);
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -47,6 +53,8 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             app.UseAuthorization();
 
