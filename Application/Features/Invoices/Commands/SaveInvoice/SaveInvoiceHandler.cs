@@ -25,7 +25,7 @@ namespace Application.Features.Invoices.Commands.SaveInvoice
             var invoiceDetailModels = _mapper.Map<ICollection<InvoiceDetail>>(request.InvoiceDetails);
             var newInvoice = new Invoice
             {
-                Date = DateTime.Now, Tax = (float) 0.15, InvoiceDetails = invoiceDetailModels
+                Date = DateTime.Now, Tax = (float) 0.15, InvoiceDetails = invoiceDetailModels, SubTotal = request.SubTotal
             };
 
             await _invoiceRepository.AddAsync(newInvoice);
