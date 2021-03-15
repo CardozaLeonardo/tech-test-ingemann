@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Mapping\" />
-    <Folder Include="Features\" />
   </ItemGroup>
 
   <ItemGroup>

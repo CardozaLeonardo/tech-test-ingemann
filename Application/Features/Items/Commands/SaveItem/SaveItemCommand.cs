@@ -17,8 +17,5 @@ namespace Application.Features.Items.Commands.SaveItem
         
         [Required]
         public float Cost { get; set; }
-        
-        [Required]
-        public bool Active { get; set; }
     }
 }

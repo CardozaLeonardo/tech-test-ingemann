@@ -30,6 +30,7 @@ namespace Application.Features.Items.Commands.SaveItem
             }
 
             var itemModel = _mapper.Map<Item>(request);
+            itemModel.Active = true;
             await _itemRepository.AddAsync(itemModel);
 
             return new Response<int>(itemModel.Id);

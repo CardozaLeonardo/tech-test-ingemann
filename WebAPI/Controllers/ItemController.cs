@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
+using Application.Features.Items.Commands.DeleteItemLogically;
 using Application.Features.Items.Commands.SaveItem;
+using Application.Features.Items.Commands.UpdateItem;
 using Application.Features.Items.Queries.GetAllItems;
 using Application.Features.Items.Queries.GetItemByCode;
 using Microsoft.AspNetCore.Mvc;
@@ -25,5 +27,19 @@ namespace WebAPI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put (int id, UpdateItemCommand command)
+        {
+            command.Key = id;
+            return Ok(await Mediator.Send(command));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return Ok(await Mediator.Send(new DeleteItemLogicallyCommand() { Id = id }));
+        }
+
     }
 }

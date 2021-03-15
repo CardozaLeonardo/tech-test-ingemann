@@ -58,6 +58,10 @@ namespace WebAPI
 
             app.UseAuthorization();
 
+            app.UseCors(
+                options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+            );
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

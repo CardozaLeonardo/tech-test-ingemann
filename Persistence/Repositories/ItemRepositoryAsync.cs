@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Interfaces;
@@ -14,6 +15,11 @@ namespace Persistence.Repositories
         public ItemRepositoryAsync(AppDbContext dbContext) : base(dbContext)
         {
             _items = dbContext.Set<Item>();
+        }
+
+        public async Task<IReadOnlyList<Item>> GetAllActiveAsync()
+        {
+            return await _items.Where(i => i.Active == true).ToListAsync();
         }
 
         public async Task<Item> GetByCode(string code)

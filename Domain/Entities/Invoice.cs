@@ -8,6 +8,8 @@ namespace Domain.Entities
     {
         public DateTime Date { get; set; }
         public float Tax { get; set; }
+
+        public float SubTotal { get; set; }
         
         public ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
